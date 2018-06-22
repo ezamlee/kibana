@@ -213,6 +213,7 @@
     "whatwg-fetch": "^2.0.3",
     "wreck": "12.4.0",
     "x-pack": "link:x-pack",
+    "yarn": "^1.6.0",
     "yauzl": "2.7.0"
   },
   "devDependencies": {
