@@ -1,0 +1,17 @@
+steps:
+  - commands:
+    - whoami
+    - pwd
+    - echo $HOME
+    - cd $HOME
+    - ls -la .
+    label: "Printing user settings"
+    agents:
+        image: "family/kibana-ubuntu-2004"
+        imageProject: "elastic-images-qa"
+        provider: "gcp"
+        machineType: "n2-standard-2"
+        localSsds: 1
+        localSsdInterface: "nvme"
+        preemptible: true
+        timeout_in_minutes: 10
