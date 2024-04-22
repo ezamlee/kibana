@@ -2,8 +2,10 @@ steps:
   - commands:
     - whoami
     - pwd
-    - echo $HOME
-    - cd $HOME
+    - cd ~
+    - pwd
+    - echo $$HOME
+    - cd $$HOME
     - ls -la .
     label: "Printing user settings"
     agents:
