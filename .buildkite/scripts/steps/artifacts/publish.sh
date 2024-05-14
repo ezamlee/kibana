@@ -51,6 +51,21 @@ chmod -R a+w target
 echo "--- Pull latest Release Manager CLI"
 docker pull docker.elastic.co/infra/release-manager:latest
 
+echo "--- Verify vault credentials are present"
+VAULT_ROLE_ID="$(get_vault_role_id)"
+if [[ "$VAULT_ROLE_ID" == "" ]]; then
+  echo VAULT_ROLE_ID is not found
+  exit 101
+fi
+
+VAULT_SECRET_ID="$(get_vault_secret_id)"
+if [[ "$VAULT_SECRET_ID" == "" ]]; then
+  echo VAULT_SECRET_ID is not found
+  exit 101
+fi
+
+echo "Credentials found"
+
 echo "--- Publish artifacts"
 if [[ "$BUILDKITE_BRANCH" == "$KIBANA_BASE_BRANCH" ]]; then
   export VAULT_ROLE_ID="$(get_vault_role_id)"
